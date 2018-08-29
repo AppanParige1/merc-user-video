@@ -1,0 +1,8 @@
+{
+    "api": {
+        "userApiUrl": "",
+        "userGourpApiUrl": "",
+        "videoApiUrl": "",
+        "videoGroupApiUrl": ""
+    }    
+}
