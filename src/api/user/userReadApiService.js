@@ -4,7 +4,6 @@ import { readProxy } from '../readApiProxy';
 const url = config.api.userApiUrl;
 
 export const getAllUsers =() => {
-    debugger;
     return readProxy(url);
 };
 
