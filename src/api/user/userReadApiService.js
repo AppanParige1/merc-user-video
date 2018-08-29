@@ -1,19 +1,16 @@
 import config from '../../config/config.json';
 import { readProxy } from '../readApiProxy';
 
-const url = config.userApiUrl;
+const url = config.api.userApiUrl;
 
 export const getAllUsers =() => {
-    readProxy(url).then((users) => {
-       return users;
-    }, ()=>{
-        console.log("problem occured while fetching the users");
-    })
+    debugger;
+    return readProxy(url);
 };
 
 export const getUserDetails =(userId) => {
     readProxy(url+userId).then((userDetails) => {
-       return videoDetails;
+       return userDetails;
     }, ()=>{
         console.log("problem occured while fetching the user details");
     })

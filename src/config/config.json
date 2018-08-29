@@ -1,6 +1,6 @@
 {
     "api": {
-        "userApiUrl": "",
+        "userApiUrl": "http://localhost:52602/api/users/",
         "userGourpApiUrl": "",
         "videoApiUrl": "",
         "videoGroupApiUrl": ""
