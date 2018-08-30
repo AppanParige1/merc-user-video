@@ -4,9 +4,7 @@ import { Card, CardTitle, CardText } from 'material-ui/Card';
 
 export const UserListItem = (props) => {
 
-    debugger;
     const formateUserGroups = (userGroups) => {
-        debugger;
         var userGroupList = '';
         userGroups && userGroups.forEach(element => {
             userGroupList += ', ' + element.GroupName;
@@ -17,18 +15,36 @@ export const UserListItem = (props) => {
     const styles = {
         cardMargin: {
             margin: '10px',
+        },
+        itemStyle: {
+            textDecoration:'none'
+        },
+        fieldStyle: {
+            paddingBottom:'5px'
+        },
+        fieldTitle: {
+            fontSize:'20px',
+            color:'darkgray'
+        },
+        fieldValue: {
+            fontSize:'20px',
+            color:'gray'
         }
     };
     return (
         <Card style={styles.cardMargin} >
+           <Link to={'/userDetailsPage/'} style={styles.itemStyle}> 
             <CardText>
-                {<div><span>{'Name: '}</span><Link to={'/userDetailsPage/'}>{props.userDetails.UserName} </Link></div>}
+                    {<div style={styles.fieldStyle}>
+                        <span style={styles.fieldTitle}>{'Name: '}</span>
+                        <span style={styles.fieldValue}>{props.userDetails.UserName} </span>
+                    </div>}
+                    {<div style={styles.fieldStyle}> 
+                        <span style={styles.fieldTitle}>{'User Groups: '}</span>
+                        <span style={styles.fieldValue}>{formateUserGroups(props.userDetails.UserGroups)}</span>
+                    </div>}
             </CardText>
-            
-            <CardText>
-                {<div> <span>{'User Groups: '}</span><span>{formateUserGroups(props.userDetails.UserGroups)}</span></div>}
-            </CardText>
-
+            </Link>
         </Card>
     );
 }

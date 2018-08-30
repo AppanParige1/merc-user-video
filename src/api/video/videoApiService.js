@@ -6,15 +6,11 @@ import { readProxy } from '../readApiProxy';
 const videoApiUrl = config.videoApiUrl;
 
 export const getAllVideos =() => {
-    readProxy(videoApiUrl).then((users) => {
-       return users;
-    }, ()=>{
-        console.log("problem occured while fetching the videos");
-    })
+    return readProxy(videoApiUrl);
 };
 
 export const getVideoDetails =(videoId) => {
-    readProxy(videoApiUrl+videoId).then((userDetails) => {
+    readProxy(videoApiUrl+videoId).then((videoDetails) => {
        return videoDetails;
     }, ()=>{
         console.log("problem occured while fetching the video details");

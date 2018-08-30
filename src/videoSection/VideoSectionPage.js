@@ -9,11 +9,11 @@ class VideoSectionPage extends Component {
 
 
     navigateToVideoList = () => {
-        this.props.history.push('/userList')
+        this.props.history.push('/videoList')
     };
 
     navigateToVideoGroupList = () => {
-        this.props.history.push('/userGroupList')
+        this.props.history.push('/videoGroupList')
     };
 
     render() {
