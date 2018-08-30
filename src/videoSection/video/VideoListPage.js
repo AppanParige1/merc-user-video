@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as videoApiService from '../../api/video/videoApiService';
 import { Header } from '../../shared/Header';
 import { VideoListItem } from './VideoListItem';
+
 class VideoListPage extends Component {
 
     state = {

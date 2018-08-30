@@ -8,9 +8,5 @@ export const getAllUsers =() => {
 };
 
 export const getUserDetails =(userId) => {
-    readProxy(url+userId).then((userDetails) => {
-       return userDetails;
-    }, ()=>{
-        console.log("problem occured while fetching the user details");
-    })
+    readProxy(url+userId);
 };

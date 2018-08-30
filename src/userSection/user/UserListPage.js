@@ -25,12 +25,11 @@ class UserListPage extends Component {
             { "UserId": 6, "UserName": "appan", "UserGroups": [{ "GroupId": 2, "GroupName": "jug", "Users": null, "VideoGroups": null }], "VideoGroups": null, "Videos": null },
             { "UserId": 7, "UserName": "lok", "UserGroups": [{ "GroupId": null, "GroupName": null, "Users": null, "VideoGroups": null }], "VideoGroups": null, "Videos": null }
         ]
-        this.setState({ userList: mockUserList })
+        this.setState({ userList: mockUserList });
 
 
         //Actual implementaion
         //this.getUserList();
-
     }
     render() {
         return (

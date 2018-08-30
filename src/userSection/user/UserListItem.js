@@ -33,7 +33,7 @@ export const UserListItem = (props) => {
     };
     return (
         <Card style={styles.cardMargin} >
-           <Link to={'/userDetailsPage/'} style={styles.itemStyle}> 
+           <Link to={'/userDetails/'+ props.userDetails.UserId} style={styles.itemStyle}> 
             <CardText>
                     {<div style={styles.fieldStyle}>
                         <span style={styles.fieldTitle}>{'Name: '}</span>

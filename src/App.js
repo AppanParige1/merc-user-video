@@ -35,8 +35,8 @@ class App extends Component {
             />
             <Route
               component={UserDetailsPage}
-              key="userDetails"
-              path="/userDetails"
+              key="userDetails/:id"
+              path="/userDetails/:id"
             />
             <Route
               component={UserGroupListPage}
