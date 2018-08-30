@@ -3,9 +3,10 @@ import config from '../../config/config.json';
 import { readProxy } from '../readApiProxy';
 
 
-const videoApiUrl = config.videoApiUrl;
+const videoApiUrl = config.api.videoApiUrl;
 
 export const getAllVideos =() => {
+    debugger;
     return readProxy(videoApiUrl);
 };
 

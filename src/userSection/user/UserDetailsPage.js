@@ -30,83 +30,69 @@ class UserDetailsPage extends Component {
 
         this.updateSelectedVideos = this.updateSelectedVideos.bind(this);
         this.updateVideos = this.updateVideos.bind(this);
-
+        this.getUserDetails = this.getUserDetails.bind(this);
+        this.getVideoList = this.getVideoList.bind(this);
     } 
 
     getVideoList = () => {
-        return videoApiService.getAllVideos().then(function (videos) {
-            this.setState({ videoList: videos })
+       
+        return videoApiService.getAllVideos().then( (videos) => {
+           
+            this.setState({ allVideos: videos })
         }, () => {
             console.log("problem occured while fetching the videos");
         })
-    }
+    }    
 
-    getUserDetails = (userId) => {
-        return userReadApiService.getUserDetails(userId).then(function (user) {
-            this.setState({ userDetails: user })
+    getUserDetails (userId) {
+       
+        return userReadApiService.getUserDetails(userId).then( (userdata) =>{
+           
+            this.setState({ userDetails: userdata });
+            this.setState({selectedVideoIds:[]});
         }, () => {
             console.log("problem occured while fetching the user details");
         })
     }
 
-    componentDidMount() {
-        //Mock Implementation- one api is ready we can  remove below 2 lines
-        const mockUser = {
-            "UserId": 3, "UserName": "GuruVayur",
-            "UserGroups": [{ "GroupId": 1, "GroupName": "Admin", "Users": null, "VideoGroups": null },
-            { "GroupId": 2, "GroupName": "Premium", "Users": null, "VideoGroups": null }],
-
-            "VideoGroups": null,
-            "Videos": [
-                {
-                    "VideoId": 23, "VideoName": "ICC World cup"
-                }
-            ]
-        };
-        this.setState({ userDetails: mockUser });
+    componentDidMount() {       
 
         
-        //Actual implementaion
-        //const userId = this.props.match.params.id;
-        //this.getUserDetails(userId);
+        
+        const userId = this.props.match.params.id;
+        this.getUserDetails(userId);        
 
-
-         //Mock Implementation- one api is ready we can  remove below 2 lines
-        const mockvideoList =  [
-            {
-                "VideoId": 23, "VideoName": "FIFA World cup",
-                "VideoGroups": [{ "GroupId": 11, "GroupName": "Sports", "Videos ": null },
-                { "GroupId": 12, "GroupName": "News", "Videos": null }]
-            },
-            {
-                "VideoId": 24, "VideoName": "Mickymouse",
-                "VideoGroups": [{ "GroupId": 14, "GroupName": "Comic", "Videos ": null },
-                { "GroupId": 15, "GroupName": "Movies", "Videos": null }]
-            },
-            {
-                "VideoId": 24, "VideoName": "Bigboss",
-                "VideoGroups": [{ "GroupId": 14, "GroupName": "Realtyshow", "Videos ": null },
-                { "GroupId": 15, "GroupName": "Serial", "Videos": null }]
-            }
-        ]
-        this.setState({ allVideos: mockvideoList })
-
-        //Actual implementaion
-        //this.getVideoList();
+       
+        
+        this.getVideoList();
     }
 
-    updateVideos =()=>{
+    updateVideos(){
+       
         userUpdateApiService.updateUser(this.state.userDetails.UserId, this.state.selectedVideoIds).then((isUpdated)=>{
             if(isUpdated){
+                
+                this.setState({selectedVideoIds:[]});
                return this.getUserDetails(this.state.userDetails.UserId)
             }
         });
     }
     
     updateSelectedVideos=(event, value)=> {
+       
         let selectedVideoId = event.target.attributes.value.value;
         var selectVidoes = this.state.selectedVideoIds;
-        selectVidoes.push(selectedVideoId);
+        if(value){
+            selectVidoes.push(selectedVideoId);
+        }
+        else{
+            var index = selectVidoes.indexOf(selectedVideoId);
+            if(index !== -1){
+                selectVidoes.splice(index,1);
+            }
+           
+        }
+       
 
         this.setState({selectedVideoIds:selectVidoes});
     };

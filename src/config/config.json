@@ -2,7 +2,8 @@
     "api": {
         "userApiUrl": "http://localhost:52602/api/users/",
         "userGourpApiUrl": "",
-        "videoApiUrl": "",
-        "videoGroupApiUrl": ""
+        "videoApiUrl": "http://localhost:52602/api/videos",
+        "videoGroupApiUrl": "",
+        "userUpdateApiUrl": "http://localhost:52602/api/users?userid="
     }    
 }
